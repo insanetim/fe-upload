@@ -74,3 +74,6 @@ functions/config.js
 # production build
 dist
 .firebase
+
+# parcel cache
+.parcel-cache
