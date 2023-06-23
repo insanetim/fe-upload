@@ -69,6 +69,11 @@ input[type='file'] {
     transition: transform 0.3s;
   }
 
+  &.uploading .preview-info {
+    bottom: 0;
+    justify-content: center;
+  }
+
   img {
     display: block;
     width: 180px;
@@ -113,6 +118,7 @@ input[type='file'] {
   justify-content: space-between;
   padding: 0 5px;
   transition: bottom 0.22s;
+  isolation: isolate;
 }
 
 .preview-info-progress {
@@ -125,4 +131,5 @@ input[type='file'] {
   align-items: center;
   justify-content: center;
   transition: width 0.22s;
+  z-index: -1;
 }
