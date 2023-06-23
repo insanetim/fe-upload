@@ -11,7 +11,7 @@ const useContainer = () => {
 
   const handleInputChange: ChangeEventHandler<HTMLInputElement> = event => {
     const inputFiles = event.target.files
-    if (inputFiles) {
+    if (inputFiles?.length) {
       dispatch({ type: UploadActionType.ADD, payload: inputFiles })
     }
   }
