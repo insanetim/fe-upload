@@ -3,10 +3,9 @@ import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
 
 import type { PreviewImageHookProps } from './types'
 import { UploadActionType, UploadContext } from '../../context/UploadContext'
-import { storage } from '../../index'
 
 const useContainer = ({ file }: PreviewImageHookProps) => {
-  const { isUploading, dispatch } = useContext(UploadContext)
+  const { storage, isUploading, dispatch } = useContext(UploadContext)
   const [isRemoving, setIsRemoving] = useState(false)
   const [progress, setProgress] = useState('0%')
 

@@ -1,4 +1,5 @@
-import React, { Dispatch, createContext, useReducer } from 'react'
+import type { FirebaseStorage } from 'firebase/storage'
+import React, { Dispatch, ReactNode, createContext, useReducer } from 'react'
 
 export enum UploadActionType {
   ADD = 'ADD',
@@ -20,9 +21,15 @@ type UploadState = {
 }
 
 interface IUploadContext {
+  storage: FirebaseStorage
   files: File[]
   isUploading: boolean
   dispatch: Dispatch<any>
+}
+
+interface UploadContextProviderProps {
+  storage: FirebaseStorage
+  children: ReactNode
 }
 
 const uploadReducer = (state: UploadState, action: UploadAction): UploadState => {
@@ -48,18 +55,20 @@ const uploadReducer = (state: UploadState, action: UploadAction): UploadState =>
 }
 
 export const UploadContext = createContext<IUploadContext>({
+  storage: {} as FirebaseStorage,
   files: [],
   isUploading: false,
   dispatch: () => {}
 })
 
-const UploadContextProvider = ({ children }) => {
+const UploadContextProvider = ({ storage, children }: UploadContextProviderProps) => {
   const [state, dispatch] = useReducer(uploadReducer, {
     files: [],
     isUploading: false
   })
 
   const contextValue = {
+    storage,
     files: state.files,
     isUploading: state.isUploading,
     dispatch

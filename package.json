@@ -4,7 +4,7 @@
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "license": "ISC",
   "scripts": {
-    "dev": "parcel",
+    "dev": "parcel --open",
     "build": "parcel build"
   },
   "dependencies": {
