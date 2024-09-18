@@ -1,33 +1,34 @@
-import React from 'react'
-import type { UploadProps } from './types'
-import Button from '../UI/Button'
-import Preview from '../Preview'
-import useContainer from './hook'
+import React from "react"
+import Preview from "../Preview"
+import Button from "../UI/Button"
+import useContainer from "./hook"
+import type { UploadProps } from "./types"
 
 const Upload: React.FC<UploadProps> = ({ accept, multiple }) => {
-  const { files, inputRef, handleOpenInput, handleInputChange, handleUpload } = useContainer()
+  const { files, inputRef, handleOpenInput, handleInputChange, handleUpload } =
+    useContainer()
 
   return (
     <>
       <input
         ref={inputRef}
-        id='file'
-        type='file'
-        accept={accept.join(',')}
+        id="file"
+        type="file"
+        accept={accept.join(",")}
         multiple={multiple}
         onChange={handleInputChange}
       />
       <Button onClick={handleOpenInput}>Открыть</Button>
       {files.length > 0 && (
         <Button
-          className='primary'
+          className="primary"
           onClick={handleUpload}
         >
           Загрузить
         </Button>
       )}
       {files.length > 0 && (
-        <div className='preview'>
+        <div className="preview">
           {files.map(file => {
             return (
               <Preview

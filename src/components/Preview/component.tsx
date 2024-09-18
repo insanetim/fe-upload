@@ -1,23 +1,24 @@
-import React from 'react'
-import classNames from 'classnames'
-
-import type { PreviewImageProps } from './types'
-import bytesToSize from '../../utils/bytesToSize'
-import useContainer from './hook'
+import classNames from "classnames"
+import React from "react"
+import bytesToSize from "../../utils/bytesToSize"
+import useContainer from "./hook"
+import type { PreviewImageProps } from "./types"
 
 const Preview: React.FC<PreviewImageProps> = ({ file }) => {
-  const { progress, isRemoving, isUploading, handleRemove } = useContainer({ file })
+  const { progress, isRemoving, isUploading, handleRemove } = useContainer({
+    file,
+  })
 
   return (
     <div
-      className={classNames('preview-image', {
+      className={classNames("preview-image", {
         removing: isRemoving,
-        uploading: isUploading
+        uploading: isUploading,
       })}
     >
       {!isUploading && (
         <div
-          className='preview-remove'
+          className="preview-remove"
           onClick={handleRemove}
         >
           &times;
@@ -27,12 +28,12 @@ const Preview: React.FC<PreviewImageProps> = ({ file }) => {
         src={URL.createObjectURL(file)}
         alt={file.name}
       />
-      <div className='preview-info'>
+      <div className="preview-info">
         {isUploading ? (
           <>
             {progress}
             <div
-              className='preview-info-progress'
+              className="preview-info-progress"
               style={{ width: progress }}
             ></div>
           </>

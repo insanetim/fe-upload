@@ -1,13 +1,12 @@
-import { useContext, useEffect, useState } from 'react'
-import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
-
-import type { PreviewImageHookProps } from './types'
-import { UploadActionType, UploadContext } from '../../context/UploadContext'
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage"
+import { useContext, useEffect, useState } from "react"
+import { UploadActionType, UploadContext } from "../../context/UploadContext"
+import type { PreviewImageHookProps } from "./types"
 
 const useContainer = ({ file }: PreviewImageHookProps) => {
   const { storage, isUploading, dispatch } = useContext(UploadContext)
   const [isRemoving, setIsRemoving] = useState(false)
-  const [progress, setProgress] = useState('0%')
+  const [progress, setProgress] = useState("0%")
 
   const handleRemove = () => {
     setIsRemoving(true)
@@ -22,9 +21,12 @@ const useContainer = ({ file }: PreviewImageHookProps) => {
       const uploadTask = uploadBytesResumable(storageRef, file)
 
       uploadTask.on(
-        'state_changed',
+        "state_changed",
         snapshot => {
-          const progress = ((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toFixed(0) + '%'
+          const progress =
+            ((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toFixed(
+              0
+            ) + "%"
           setProgress(progress)
         },
         error => {
@@ -32,7 +34,7 @@ const useContainer = ({ file }: PreviewImageHookProps) => {
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
-            console.log('File available at', downloadURL)
+            console.log("File available at", downloadURL)
           })
         }
       )

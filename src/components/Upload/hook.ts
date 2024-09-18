@@ -1,5 +1,5 @@
-import { ChangeEventHandler, useContext, useEffect, useRef } from 'react'
-import { UploadActionType, UploadContext } from '../../context/UploadContext'
+import { ChangeEventHandler, useContext, useEffect, useRef } from "react"
+import { UploadActionType, UploadContext } from "../../context/UploadContext"
 
 const useContainer = () => {
   const { files, dispatch } = useContext(UploadContext)

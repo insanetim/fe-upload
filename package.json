@@ -2,22 +2,22 @@
   "name": "fe-upload",
   "source": "src/index.html",
   "browserslist": "> 0.5%, last 2 versions, not dead",
-  "license": "ISC",
+  "license": "UNLICENSED",
   "scripts": {
     "dev": "parcel --open",
     "build": "parcel build"
   },
   "dependencies": {
-    "classnames": "^2.3.2",
-    "firebase": "^10.7.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "classnames": "^2.5.1",
+    "firebase": "^10.13.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@parcel/transformer-sass": "2.10.3",
-    "@types/react": "^18.2.42",
-    "@types/react-dom": "^18.2.17",
-    "parcel": "^2.10.3",
+    "@parcel/transformer-sass": "2.12.0",
+    "@types/react": "^18.3.7",
+    "@types/react-dom": "^18.3.0",
+    "parcel": "^2.12.0",
     "process": "^0.11.10"
   }
 }
